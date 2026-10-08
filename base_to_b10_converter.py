@@ -1,16 +1,21 @@
-num = input("Enter line of code to be converted to base 10: ")
-base = int(input("Enter base to be converted into: "))
+num = input("Enter number to be converted to base 10: ")
+base = int(input(f"Enter base that {num} is in: "))
 
-def convert_base_to_b10(num):
-    """runs through the converting process"""
-    numbers_to_add = []
-    power_of = 0
-    searching = 0
-    while searching <= len(num) or power_of <= len(num):
-        new_num = num[0]*base**power_of
-        print(f"{num[searching]}*{base}**{power_of} = {new_num}")
-        power_of+1
-        searching+1
-        numbers_to_add.append(new_num)
-    return "".join(numbers_to_add)
-convert_base_to_b10(num)
+def convert_base_to_b10(num, base):
+    """Converts a chosen base and numbers from that base to base 10"""
+    total = 0
+    power = 0
+    for digit in reversed(num):
+        value = int(digit)
+        if value >= base:
+            print(f"{value} is not a valid digit for base {base}.")
+            return None
+        new_num = value * (base ** power)
+        print(f"{digit}*({base}**{power}) = {new_num}")
+        total += new_num
+        power+=1
+    return total
+answer = convert_base_to_b10(num, base)
+
+if answer is not None:
+    print(answer)

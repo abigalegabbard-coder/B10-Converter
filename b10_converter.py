@@ -2,7 +2,7 @@ num = int(input("Enter a number to convert: "))
 usernewbase = int(input("Enter a new base: "))
 
 def convert_base10_to_newbase(num, newbase):
-    """runs through the code"""
+    """Converts a user input from base 10 to another chosen base"""
     new_num = []
     while num > 0:
         remainder = num%newbase
